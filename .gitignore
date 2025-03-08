@@ -1,0 +1,3 @@
+# Bỏ qua node_modules cho cả backend và frontend
+BACK_END/node_modules/
+FRONT_END/vue-project/node_modules/
