@@ -10,6 +10,7 @@ const publisherRoutes = require("./routes/publisherRoutes")
 const borrowerDetailsRoutes = require('./routes/Borrower_details');  // Import route mới
 const ChatBoxRoutes = require("./routes/ChatBoxRoutes");
 const gtts = require("gtts");
+const multer = require('multer'); // Thêm dòng này
 
 // Kết nối MongoDB
 connectDB();
@@ -52,7 +53,6 @@ app.post("/tts", async (req, res) => {
         res.status(500).json({ error: "Lỗi server" });
     }
 });
-
 // Port
 const PORT = process.env.PORT || 3000;  // Lấy cổng từ biến môi trường hoặc cổng mặc định
 
