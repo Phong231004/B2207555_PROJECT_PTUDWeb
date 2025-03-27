@@ -125,3 +125,26 @@ module.exports.checkReaderLogin = async (req, res) => {
     res.status(500).json({ message: 'Lỗi hệ thống!' });
   }
 };
+
+exports.getReader = async (req, res) => {
+  try {
+    const { name } = req.params;
+    console.log('Tìm đọc giả có tên:', name); // Debug
+
+    if (!name) {
+      return res.status(400).json({ message: 'Vui lòng nhập tên đọc giả' });
+    }
+
+    const readers = await Reader.find({ TEN: { $regex: new RegExp(`^${name}$`, 'i') } });
+    
+    console.log('📌 Kết quả tìm kiếm:', readers); // Debug
+
+    if (readers.length === 0) {
+      return res.status(404).json({ message: 'Đọc giả không tồn tại!' });
+    }
+
+    res.json(readers);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi server', error: error.message });
+  }
+};

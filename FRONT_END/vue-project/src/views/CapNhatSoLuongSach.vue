@@ -7,6 +7,7 @@
       <p @click="SEARCH_FOR_BOOK_BORROWER_INFORMATION"><i class="fas fa-search"></i> TÌM KIẾM THÔNG TIN NGƯỜI MƯỢN SÁCH</p>
       <p @click="REGISTER_WHEN_COMING_TO_BORROW_BOOKS_IN_PERSON"><i class="fas fa-user-plus"></i> ĐĂNG KÝ KHI ĐẾN MƯỢN SÁCH TRỰC TIẾP</p>
       <p @click="UPDATEBOOKS"><i class="fas fa-plus"></i> CẬP NHẬT SỐ LƯỢNG SÁCH</p>
+      <p @click="RETURNBOOKS"><i class="fas fa-plus"></i> DUYỆT TRẢ SÁCH</p>
     </div>
 
     <!-- Nút trở lại -->
@@ -57,6 +58,10 @@
         </button>
       </div>
     </div>
+    <button class="messenger-icon" @click="goChat">
+      <span class="chat-text" style="color: black;">Chat</span>
+      <i class="bi bi-chat-dots"></i>
+    </button>
   </div>
 </template>
 
@@ -88,6 +93,9 @@ export default {
         UPDATEBOOKS(){
           window.location.href = '/CapNhatSoLuongSach';
         },
+        RETURNBOOKS(){
+          window.location.href = '/NhanVienDUyetTraSach';
+        },
     // Tìm sách theo ID
     async fetchBook() {
       if (!this.bookId) {
@@ -107,6 +115,11 @@ export default {
         console.error("Lỗi khi tìm sách:", error);
         alert("Đã xảy ra lỗi khi tìm sách!");
       }
+    },
+    goChat() {
+      setTimeout(() => {
+        window.location.href = '/StaffChat';
+      }, 100);
     },
     // Cập nhật số lượng sách
     async updateQuantity() {
@@ -139,6 +152,28 @@ export default {
 </script>
 
 <style scoped>
+    .messenger-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0078FF;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 120, 255, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.messenger-icon:hover {
+  box-shadow: 0 0 20px rgba(0, 120, 255, 1);
+}
       .pagecontent{
             background: linear-gradient(135deg, rgba(0, 102, 204, 0.8), rgba(0, 102, 204, 0.2));
             color: white;

@@ -10,4 +10,7 @@ router.get('/', readerController.getAllReader);
 router.get('/:MADOCGIA', readerController.checkReaderCode);
 // Check đăng nhập
 router.post('/login', readerController.checkReaderLogin);  // Sửa lại để là POST
+
+//Lấy thông tin đọc giả
+router.post('/:name', readerController.getReader);
 module.exports = router;

@@ -5,6 +5,13 @@
     <div class="header">
         <h1 style="font-family: K2D">DANH SÁCH ĐÃ ĐĂNG KÝ CỦA {{ HoTenDG }}</h1>
       </div>
+      <!-- Thanh điều hướng -->
+    <nav class="nav-container">
+      <div class="nav-item" @click="goToInfo">Thông Tin</div>
+      <div class="nav-item" @click="returnbook">Trả sách</div>
+      <div class="nav-item" @click="goChatStaff">Chat với nhân viên</div>
+      <div class="nav-item" @click="Onlie">Thư viên Online</div>
+    </nav>
     <div class="card">
       <div class="card-body">
         <table class="table table-striped table-hover">
@@ -61,7 +68,7 @@ export default {
                 borrowedBooks: [],
                 matchedBookIds: [],
                 currentPage: 1,
-                itemsPerPage: 7, // Số lượng sách hiển thị trên mỗi trang
+                itemsPerPage: 5, // Số lượng sách hiển thị trên mỗi trang
             };
         },
     computed: {
@@ -92,7 +99,18 @@ export default {
             console.log("Dữ liệu sách:", this.borrowedBooks);
             this.getBorrowedBookIds(); // Gọi để lấy danh sách mã sách
         },
-
+        goToInfo() {
+          window.location.href = '/DocGiaXemDanhSachDaMuon'; 
+        },
+        goChatStaff(){
+          window.location.href = '/ReaderChat'; 
+        },
+        returnbook(){
+          window.location.href = '/YeuCauTraSachTuDocGia'; 
+        },
+        Onlie(){
+          window.location.href = '/ThuVienOnline'; 
+        },
         getBorrowedBookIds() {
             let ids = [];
             for (let i = 1; i < this.borrowedBooks.length; i += 2) {
@@ -176,12 +194,38 @@ export default {
 };
 </script>
 <style scoped>
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #f8f9fa;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ff1820, #ff4511);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
     .page{
       background: linear-gradient(135deg, rgba(0, 102, 204, 0.8), rgba(0, 102, 204, 0.2));
       background-size: cover;
       background-position: center;
       color: white;
-      height: 610px;
+      height: 730px;
       width: 100%;
     }
     .header {

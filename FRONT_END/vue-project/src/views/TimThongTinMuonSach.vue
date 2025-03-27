@@ -7,6 +7,7 @@
       <p @click="SEARCH_FOR_BOOK_BORROWER_INFORMATION"><i class="fas fa-search"></i> TÌM KIẾM THÔNG TIN NGƯỜI MƯỢN SÁCH</p>
       <p @click="REGISTER_WHEN_COMING_TO_BORROW_BOOKS_IN_PERSON"><i class="fas fa-user-plus"></i> ĐĂNG KÝ KHI ĐẾN MƯỢN SÁCH TRỰC TIẾP</p>
       <p @click="UPDATEBOOKS"><i class="fas fa-plus"></i> CẬP NHẬT SỐ LƯỢNG SÁCH</p>
+      <p @click="RETURNBOOKS"><i class="fas fa-plus"></i> DUYỆT TRẢ SÁCH</p>
     </div>
 
     <!-- Main Content -->
@@ -45,6 +46,8 @@
               <th>Tác Giả</th>
               <th>Họ Tên Nhân Viên</th>
               <th>Chức Vụ</th>
+              <th>Ngày mượn</th>
+              <th>Ngày trả</th>
             </tr>
           </thead>
           <tbody>
@@ -61,11 +64,17 @@
               <td>{{ item.TACGIA }}</td>
               <td>{{ item.HOTENNV }}</td>
               <td>{{ item.CHUCVU }}</td>
+              <td>{{ item.NGAYMUON }}</td>
+              <td>{{ item.NGAYTRA }}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+     <button class="messenger-icon" @click="goChat">
+      <span class="chat-text" style="color: black;">Chat</span>
+      <i class="bi bi-chat-dots"></i>
+    </button>
   </div>
 </template>
 
@@ -93,6 +102,11 @@ export default {
         this.$router.push('/StaffLogin');
       }, 100); // Đợi 100ms trước khi chuyển hướng
     },
+    goChat() {
+      setTimeout(() => {
+        window.location.href = '/StaffChat';
+      }, 100);
+    },
         BOOK_LOAN_REGISTRATION_FORM() {
           window.location.href = '/DanhSachDonDangKyMuon';
         },
@@ -104,7 +118,10 @@ export default {
         },
         UPDATEBOOKS(){
           window.location.href = '/CapNhatSoLuongSach';
-        }
+        },
+        RETURNBOOKS(){
+          window.location.href = '/NhanVienDUyetTraSach';
+        },
   }
 };
 </script>
@@ -311,5 +328,27 @@ export default {
     .btn-primary {
       transition: none;  /* Loại bỏ hiệu ứng hover */
     }
+    .messenger-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0078FF;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 120, 255, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.messenger-icon:hover {
+  box-shadow: 0 0 20px rgba(0, 120, 255, 1);
+}
     
 </style>

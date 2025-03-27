@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div class="menu-dropdown" @click="goToInfo">
-      <p>Thông Tin</p>
-    </div>
 
     <header class="bg-primary text-white text-center py-4">
       <h1 style="font-family: K2D;">THƯ VIỆN SÁCH TRI THỨC ONLINE</h1>
     </header>
+    <!-- Thanh điều hướng -->
+    <nav class="nav-container">
+      <div class="nav-item" @click="goToInfo">Thông Tin</div>
+      <div class="nav-item" @click="returnbook">Trả sách</div>
+      <div class="nav-item" @click="goChatStaff">Chat với nhân viên</div>
+      <div class="nav-item" @click="Onlie">Thư viên Online</div>
+    </nav>
 
     <button class="btn btn-back" @click="goBack">Trở lại</button>
 
@@ -55,7 +59,7 @@
     </section>
 
     <button class="messenger-icon" @click="goChat">
-      <span class="chat-text" style="color: black;">Chat</span>
+      <span class="chat-text" style="color: black;">Chat AI</span>
       <i class="bi bi-chat-dots"></i>
     </button>
   </div>
@@ -153,6 +157,15 @@ export default {
     },
     goToInfo() {
       window.location.href = '/DocGiaXemDanhSachDaMuon'; 
+    },
+    goChatStaff(){
+      window.location.href = '/ReaderChat'; 
+    },
+    Onlie(){
+          window.location.href = '/ThuVienOnline'; 
+        },
+    returnbook(){
+      window.location.href = '/YeuCauTraSachTuDocGia'; 
     }
   },
   mounted() {
@@ -162,6 +175,33 @@ export default {
 </script>
 
 <style scoped>
+/* Định dạng thanh điều hướng */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #f8f9fa;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ff1820, #ff4511);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
 .btn-back:hover {
   background-color: #ff4500;
   transform: scale(1.1);

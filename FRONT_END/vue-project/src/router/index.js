@@ -14,6 +14,10 @@ import ThemDocGia from '@/views/ThemDocGia.vue';
 import ThemNhanVien from '@/views/ThemNhanVien.vue';
 import ChatBoxAI from '@/views/ChatBoxAI.vue';
 import DocGiaXemDanhSachDaMuon from '@/views/DocGiaXemSachDaMuon.vue';
+import StaffChat from '@/views/StaffChat.vue';
+import ReaderChat from '@/views/ReaderChat.vue';
+import YeuCauTraSachTuDocGia from '@/views/YeuCauTraSachTuDocGia.vue';
+import NhanVienDuyetTraSach from '@/views/NhanVienDuyetTraSach.vue';
 const routes = [
     { path: '/', name: 'HomeLogin', component: HomeLogin },
     { path: '/ReaderLogin', name: 'ReaderLogin', component: ReaderLogin },
@@ -30,6 +34,10 @@ const routes = [
     { path: '/ThemNhanVien', name: 'ThemNhanVien', component: ThemNhanVien },
     { path: '/ChatBoxAI', name: 'ChatBoxAI', component: ChatBoxAI },
     { path: '/DocGiaXemDanhSachDaMuon', name: 'DocGiaXemDanhSachDaMuon', component: DocGiaXemDanhSachDaMuon },
+    { path: '/StaffChat', name: 'StaffChat', component: StaffChat },
+    { path: '/ReaderChat', name: 'ReaderChat', component: ReaderChat },
+    { path: '/YeuCauTraSachTuDocGia', name: 'YeuCauTraSachTuDocGia', component: YeuCauTraSachTuDocGia },
+    { path: '/NhanVienDuyetTraSach', name: 'NhanVienDuyetTraSach', component: NhanVienDuyetTraSach },
 ];
 
 const router = createRouter({
